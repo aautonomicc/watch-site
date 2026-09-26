@@ -1,0 +1,18 @@
+# W@tch website
+
+Landing page for [W@tch](https://github.com/aautonomicc/Watch-It) — a peer-to-peer media player for the Autonomi network.
+
+Live at **https://aautonomicc.github.io/watch-site/**
+
+## How it works
+
+Hand-built static site — one `index.html` + `style.css`, no framework, no build step. Served by GitHub Pages from the `main` branch root.
+
+- Download buttons link to the latest GitHub release; a small inline script resolves direct per-platform asset URLs from the GitHub API at page load (falls back to the releases page if the API is unreachable).
+- Branding assets are copied from the Watch-It repo (`branding/icon.svg`, `branding/social-preview.png`, `docs/screenshots/*.jpg`).
+- The wordmark uses [Anton](https://fonts.google.com/specimen/Anton), self-hosted under the SIL Open Font License (`assets/fonts/Anton-OFL.txt`).
+- Screenshots show a sample library; titles and artwork are invented/AI-generated for the screenshots.
+
+## Editing
+
+Edit `index.html` / `style.css` and push to `main` — Pages redeploys automatically.
