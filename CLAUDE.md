@@ -12,11 +12,13 @@ Landing page + step-by-step install guide live. Deploys automatically on push to
 ## Architecture Notes
 - `index.html` — landing page (neon glass style, palette from the app's WiTokens: ink #0A0A0A / bone #F5F2EB / accent #42A5F5)
 - `install.html` — plain-English install guide, sections in order: Android phone, Windows, Linux, Mac, Android TV
+- `upload.html` — plain-English upload guide (wallet setup/funding, TMDB key, add files, matching, quality versions + encoding rationale, cost, after-upload/.watch-list sharing). Facts extracted from the LOCAL ~/projects/Watch-It repo (publish_screen/batch_upload_screen/publish_plan/wallet_screen) — UI labels match the app. Linked from install.html nav + footer only, NOT from the home page (user's request). Screenshot slots → `assets/upload/README.md`
 - `apk/index.html` — JS redirect to the latest `.apk` release asset; gives Android TV users the short Downloader address `aautonomicc.github.io/watch-site/apk`
 - `style.css` — shared by both pages; install-guide styles at the bottom
 - Download buttons on both pages resolve direct per-platform asset URLs from the GitHub releases API at page load (fallback: releases page)
 - Install-guide screenshot slots are `display:none` until their image loads (`onload` reveals) — drop real screenshots into `assets/install/` with the filenames listed in `assets/install/README.md` and they appear with no HTML change. None captured yet (need real Android/Windows/Mac/TV devices).
 - Facts baked into the guide: Windows zip contains `watchit.exe`; macOS dmg contains `W@tch.app` (unsigned → right-click Open); one universal APK serves both Android phone and TV; Linux AppImage needs the execute bit.
 ## Recent Changes
+- [2026-09-27] Added upload.html (step-by-step upload guide: wallet + Arbitrum One funding, TMDB key, batch uploader flow, quality tiers High/Medium/Low/Original with "why encode" explanation, live cost estimate, permanence warnings, .watch-list sharing) — all facts verified against local Watch-It code by research agent; 13 hidden screenshot slots in assets/upload/; new .warnnote/.qualtable styles in style.css; Upload nav link added to install.html only (kept off home page)
 - [2026-09-27] Added install.html (step-by-step guide for non-technical users: Android phone / Windows / Linux / Mac / Android TV), apk/ short-URL redirect for TV sideloading (verified it resolves and downloads the latest APK), hidden screenshot slots + assets/install/README.md naming them, Install nav link + guide link on the landing page.
 - [2026-09-26] Initial landing page — neon glass style (9b400fd).
