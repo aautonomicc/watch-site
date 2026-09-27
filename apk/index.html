@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Downloading W@tch for Android…</title>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<style>
+  body { background: #06080f; color: #F5F2EB; font-family: system-ui, sans-serif;
+         display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+  a { color: #42A5F5; }
+  .box { padding: 40px; max-width: 560px; }
+  h1 { font-size: 26px; }
+  p { color: #a7afbc; line-height: 1.6; font-size: 18px; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Getting the newest W@tch app…</h1>
+  <p id="msg">Your download should start in a few seconds.</p>
+  <p><a id="fallback" href="https://github.com/aautonomicc/Watch-It/releases/latest">Tap here if nothing happens</a></p>
+</div>
+<script>
+/* Resolves the latest .apk release asset and redirects to it, so TVs can
+   type the short address aautonomicc.github.io/watch-site/apk into the
+   Downloader app instead of a long versioned GitHub URL. */
+(function () {
+  var api = 'https://api.github.com/repos/aautonomicc/Watch-It/releases/latest';
+  fetch(api).then(function (r) { return r.ok ? r.json() : null; }).then(function (rel) {
+    var asset = rel && rel.assets && rel.assets.find(function (a) { return a.name.endsWith('.apk'); });
+    if (asset) {
+      document.getElementById('fallback').href = asset.browser_download_url;
+      window.location.href = asset.browser_download_url;
+    } else {
+      document.getElementById('msg').textContent = 'Tap the link below to get the app from the releases page.';
+    }
+  }).catch(function () {
+    document.getElementById('msg').textContent = 'Tap the link below to get the app from the releases page.';
+  });
+})();
+</script>
+</body>
+</html>
