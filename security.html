@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security &amp; keys in W@tch — plain-English guide</title>
+<meta name="description" content="How W@tch handles security and keys, explained plainly: the self-generated software wallet, Trezor hardware wallets, the 12-word phrase, backups and device sync — plus W@tch homescreen images for every Trezor model.">
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<meta property="og:title" content="Security &amp; keys in W@tch">
+<meta property="og:description" content="Plain-English explanation of the keys W@tch uses — software wallet, Trezor hardware wallet, backups and device sync.">
+<meta property="og:image" content="https://aautonomicc.github.io/watch-site/assets/social-preview.png">
+<meta property="og:url" content="https://aautonomicc.github.io/watch-site/security.html">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bgfx"></div>
+<div class="page">
+
+<nav>
+  <a class="lockup" href="index.html" aria-label="W@tch home">
+    <svg width="34" height="34" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="110" fill="#0a0a0a" stroke="rgba(255,255,255,0.16)" stroke-width="8"/><path d="M 128 160 L 179.2 160 L 212.8 400 L 184 400 Z" fill="#f5f2eb"/><path d="M 230.4 160 L 281.6 160 L 270.4 400 L 241.6 400 Z" fill="#42a5f5"/><path d="M 332.8 160 L 384 160 L 328 400 L 299.2 400 Z" fill="#f5f2eb"/></svg>
+    <div class="wordmark">W<span class="accent">@</span>tch</div>
+  </a>
+  <div class="navpill">
+    <a href="index.html">Home</a>
+    <a href="install.html">Install</a>
+    <a href="upload.html">Upload</a>
+    <a href="security.html" class="navcurrent">Security</a>
+    <a href="https://github.com/aautonomicc/Watch-It">GitHub</a>
+  </div>
+</nav>
+
+<header class="guidehero">
+  <h1>Security &amp; your keys,<br>in plain English</h1>
+  <p class="sub">W@tch has no accounts, no passwords and no servers — so the only secrets that matter are the ones that live on your own devices. This page explains exactly what they are, where they're kept, and what each one can do.</p>
+  <div class="platjump">
+    <a href="#overview">The short version</a>
+    <a href="#keys">The keys</a>
+    <a href="#software">Self-generated wallet</a>
+    <a href="#trezor">Trezor hardware wallet</a>
+    <a href="#homescreens">Trezor homescreens</a>
+    <a href="#habits">Good habits</a>
+  </div>
+  <p class="guidenote">Just watching needs <b>none of this</b> — no key, no wallet, no sign-up. Keys only enter the picture when you <b>upload</b> your own media (uploads are paid), <b>back up</b> your W@tch to the network, or <b>link devices</b> with My W@tch. Everything below is about those three things.</p>
+</header>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="platform" id="overview">
+  <div class="plathead"><div class="platicon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 L20 5.8 V11.5 C20 16.8 16.6 20 12 21.5 C7.4 20 4 16.8 4 11.5 V5.8 Z" fill="none" stroke="#8ecdf9" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 11.8 L11 14.3 L15.5 9.3" stroke="#8ecdf9" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h2>The short version</h2><p>Five sentences that cover almost everything.</p></div></div>
+  <ol class="steps">
+    <li>
+      <h3>Watching is key-free</h3>
+      <p>Streaming, downloading and browsing never touch a key or a wallet. There is no account to create, nothing to log into, and W@tch sends no telemetry.</p>
+    </li>
+    <li>
+      <h3>One wallet, your choice of two homes for it</h3>
+      <p>Uploads and backups are paid for from a small built-in wallet. Its key can live <b>in software on your computer</b> (the self-generated wallet) or <b>inside a Trezor hardware wallet</b>, where it never leaves the device. Both are explained below.</p>
+    </li>
+    <li>
+      <h3>12 words rule everything</h3>
+      <p>The wallet is defined by a standard <b>12-word recovery phrase</b>. Those words restore the money <i>and</i> — via W@tch's encrypted backup — your whole library, watch points and profiles on a fresh install. Anyone who has the words has all of that too, so they belong on paper, not in a file or photo.</p>
+    </li>
+    <li>
+      <h3>Backups are encrypted before they leave your device</h3>
+      <p>A backup is sealed with keys derived from your wallet — the network only ever stores ciphertext at an address nobody can derive without your words. Reading your backup back is free and needs no funded wallet.</p>
+    </li>
+    <li>
+      <h3>Device sync is sealed end to end</h3>
+      <p>My W@tch links your devices with a shared <b>link secret</b> (the invite code). Everything they exchange — library, watch points, profiles, backup read keys — travels encrypted under that secret. Treat invite codes like keys: share them only with your own devices.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ THE KEYS ============ -->
+<section class="platform" id="keys">
+  <div class="plathead"><div class="platicon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8.5" cy="8.5" r="4.5" fill="none" stroke="#8ecdf9" stroke-width="2"/><circle cx="8.5" cy="8.5" r="1.2" fill="#8ecdf9"/><path d="M11.8 11.8 L20 20 M17.3 17.3 L20 14.6 M14.6 14.6 L17.3 11.9" stroke="#8ecdf9" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div><div><h2>Every key W@tch uses</h2><p>What each one is for, and what someone could do with it.</p></div></div>
+  <table class="qualtable">
+    <tr><th>Key</th><th>What it does</th><th>If it leaks</th></tr>
+    <tr><td>Wallet key (12 words)</td><td>Pays for uploads and backups; the backup keys are derived from it</td><td>Money can be taken and backups read — the one secret to guard hardest</td></tr>
+    <tr><td>Backup keys</td><td>Derived from the wallet; encrypt and locate your backup on the network</td><td>Backups (library, watch points, profiles) can be read — money stays safe</td></tr>
+    <tr><td>My W@tch link secret</td><td>The invite code; seals all sync traffic between your devices</td><td>The holder's device can join your sync and read what it carries</td></tr>
+    <tr><td>Profile PINs</td><td>Lock the admin and kid profiles inside the app</td><td>Convenience lock only — stored strengthened (Argon2id), never a money key</td></tr>
+  </table>
+  <ol class="steps" style="margin-top:28px">
+    <li>
+      <h3>What never exists at all</h3>
+      <p>No W@tch server holds anything — there are no W@tch servers. No password database, no account recovery, no company that can reset, read or lose your keys. The flip side: <b>nobody can recover them for you either</b>. The 12 words on paper are the safety net.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ SOFTWARE WALLET ============ -->
+<section class="platform" id="software">
+  <div class="plathead"><div class="platicon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6" width="19" height="13" rx="2.5" fill="none" stroke="#8ecdf9" stroke-width="2"/><path d="M2.5 9.5 L21.5 9.5" stroke="#8ecdf9" stroke-width="2"/><circle cx="17" cy="14.5" r="1.3" fill="#8ecdf9"/></svg></div><div><h2>The self-generated wallet</h2><p>Created inside W@tch in a minute — the right choice for most people.</p></div></div>
+  <ol class="steps">
+    <li>
+      <h3>How it's created</h3>
+      <p>W@tch generates a fresh 12-word phrase on your own device, shows it <b>once</b>, and makes you retype three of the words before anything is saved — proof you actually wrote them down. The phrase itself is never stored anywhere; only the key derived from it is kept. You can also import an existing 12- or 24-word phrase or a raw private key.</p>
+    </li>
+    <li>
+      <h3>Where the key lives</h3>
+      <p>In your operating system's <b>keychain</b> wherever one exists (macOS Keychain, Windows Credential Manager, the Linux Secret Service), so it's protected the same way your other saved credentials are. Where no keychain is available, W@tch falls back to a key file readable only by your user account — and tells you so on the wallet screen.</p>
+    </li>
+    <li>
+      <h3>Optional: lock the key file with a passphrase</h3>
+      <p>If your wallet uses the file fallback, you can protect it with a passphrase. The file is then encrypted with a deliberately slow key-stretching algorithm (<b>Argon2id</b>) and authenticated encryption (<b>ChaCha20-Poly1305</b>) — after every restart W@tch asks for the passphrase before the wallet unlocks. Forget the passphrase and the 12 words still restore everything.</p>
+    </li>
+    <li>
+      <h3>Treat it as a hot wallet</h3>
+      <p>A software wallet's key is on an internet-connected computer, which is exactly what "hot wallet" means. That's fine for its job — <b>keep only small amounts in it</b>, like cash in a pocket, and top it up when you upload. Never move savings into it. If you want the key off the computer entirely, that's what the Trezor option is for.</p>
+    </li>
+    <li>
+      <h3>What the 12 words restore</h3>
+      <p>On any fresh install: import the words, and the wallet is back. If you've used <b>Settings → Backup</b>, the same words also decrypt and restore your whole W@tch — library, watch points, profiles and artwork. One phrase, everything back.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ TREZOR ============ -->
+<section class="platform" id="trezor">
+  <div class="plathead"><div class="platicon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7 V5.5 a4 4 0 0 1 8 0 V7" fill="none" stroke="#8ecdf9" stroke-width="2"/><path d="M5.5 7 h13 v8.5 L12 20.5 L5.5 15.5 Z" fill="none" stroke="#8ecdf9" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="1.4" fill="#8ecdf9"/></svg></div><div><h2>Trezor hardware wallet</h2><p>Keys that never touch the computer, and payments that need your finger.</p></div></div>
+  <ol class="steps">
+    <li>
+      <h3>What a hardware wallet changes</h3>
+      <p>With a Trezor connected (desktop only, plain USB — no extra software or browser bridge needed), <b>the wallet key is generated inside the device and never leaves it</b>. W@tch sends the thing that needs signing over USB; you check it on the Trezor's own screen and confirm with a physical press; only the signature comes back. Malware on the computer can't spend your money — it has nothing to steal and can't press the button.</p>
+    </li>
+    <li>
+      <h3>The setup ceremony</h3>
+      <p>Connecting a Trezor to W@tch takes three confirmations on the device: it signs a fixed identity message <b>twice</b> (the two signatures must match exactly — a guard against a misbehaving device), and then <b>shows the wallet address on its own screen</b> so you can compare it with what W@tch displays. That last step matters: the Trezor's screen is the one display no software on your computer can fake. W@tch also verifies that the device's signature mathematically leads back to the address it reports, before anything is saved.</p>
+    </li>
+    <li>
+      <h3>Every payment is a tap</h3>
+      <p>Uploads and backups each wait for a physical confirmation on the device, with the amount shown on its screen. W@tch opens a fresh session with the device for every signature, silently re-checks the address before each tap, and verifies every signature locally <b>before</b> anything is sent to the network — if something doesn't line up, nothing is sent and nothing is spent. Whole upload batches are pooled so a batch typically needs just one payment confirmation.</p>
+    </li>
+    <li>
+      <h3>What's stored on the computer</h3>
+      <p>Only a <b>public marker</b> — the wallet address and a fingerprint, no secret of any kind. Optionally (on by default) W@tch keeps the derived <b>backup read keys</b> on the computer so your linked devices can follow your backups without the Trezor plugged in; those keys can read backups but can never spend. Turn that off and even reading a backup needs the device.</p>
+    </li>
+    <li>
+      <h3>Passphrase / hidden wallets work</h3>
+      <p>If your Trezor uses a passphrase (the "25th word" that opens a hidden wallet), enter it on the device as usual — W@tch binds itself to whichever wallet the ceremony ran in, and refuses loudly, before any tap, if the device is later opened on a different hidden wallet. Each passphrase is its own wallet with its own backup line.</p>
+    </li>
+    <li>
+      <h3>Linux note</h3>
+      <p>The first connection on Linux may need Trezor's standard udev rules so your user can talk to the device — W@tch detects this and shows a dialog with the one-liner to copy. It's the usual Trezor setup step, not a W@tch quirk.</p>
+    </li>
+  </ol>
+  <p class="trademarknote">Trezor is a trademark of Trezor Company s.r.o. W@tch is an independent open-source project — not affiliated with, nor endorsed by, Trezor Company s.r.o. Their terms require written consent to display the Trezor logo, which is why you'll only see the name in text here.</p>
+</section>
+
+<!-- ============ HOMESCREENS ============ -->
+<section class="platform" id="homescreens">
+  <div class="plathead"><div class="platicon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5" fill="none" stroke="#8ecdf9" stroke-width="2"/><rect x="9.5" y="5.5" width="5" height="3.4" rx="0.8" fill="#8ecdf9"/><circle cx="12" cy="17.5" r="1.2" fill="#8ecdf9"/></svg></div><div><h2>W@tch homescreens for your Trezor</h2><p>Free W@tch-logo wallpapers sized exactly for every Trezor model's screen.</p></div></div>
+  <p class="hsintro">Trezor devices let you set a custom homescreen image. These are ready-made, to-spec files — the two small ones are strict black-and-white, as those screens require. To set one: open <b>Trezor Suite → Settings → Device → Homescreen</b>, choose <b>Edit</b>, and upload the file for your model.</p>
+  <div class="hsgrid">
+    <div class="hscard">
+      <div class="hsframe hsmono"><img src="assets/trezor/watch-homescreen-trezor-model-one-128x64.png" alt="W@tch logo homescreen for Trezor Model One, 128 by 64 pixels, black and white" width="128" height="64"></div>
+      <b>Model One</b><span>128 × 64 · 1-bit PNG</span>
+      <a class="btn-glass hsdl" href="assets/trezor/watch-homescreen-trezor-model-one-128x64.png" download>Download</a>
+    </div>
+    <div class="hscard">
+      <div class="hsframe hsmono"><img src="assets/trezor/watch-homescreen-trezor-safe-3-128x64.png" alt="W@tch logo homescreen for Trezor Safe 3, 128 by 64 pixels, black and white" width="128" height="64"></div>
+      <b>Safe 3</b><span>128 × 64 · 1-bit PNG</span>
+      <a class="btn-glass hsdl" href="assets/trezor/watch-homescreen-trezor-safe-3-128x64.png" download>Download</a>
+    </div>
+    <div class="hscard">
+      <div class="hsframe"><img src="assets/trezor/watch-homescreen-trezor-model-t-240x240.png" alt="W@tch logo homescreen for Trezor Model T, 240 by 240 pixels, colour" width="120" height="120"></div>
+      <b>Model T</b><span>240 × 240 · PNG · under 16 KB</span>
+      <a class="btn-glass hsdl" href="assets/trezor/watch-homescreen-trezor-model-t-240x240.png" download>Download</a>
+    </div>
+    <div class="hscard">
+      <div class="hsframe"><img src="assets/trezor/watch-homescreen-trezor-safe-5-240x240.png" alt="W@tch logo homescreen for Trezor Safe 5, 240 by 240 pixels, colour" width="120" height="120"></div>
+      <b>Safe 5</b><span>240 × 240 · PNG · under 16 KB</span>
+      <a class="btn-glass hsdl" href="assets/trezor/watch-homescreen-trezor-safe-5-240x240.png" download>Download</a>
+    </div>
+    <div class="hscard">
+      <div class="hsframe"><img src="assets/trezor/watch-homescreen-trezor-safe-7-380x520.png" alt="W@tch logo homescreen for Trezor Safe 7, 380 by 520 pixels, colour" width="95" height="130"></div>
+      <b>Safe 7</b><span>380 × 520 · PNG · under 64 KB</span>
+      <a class="btn-glass hsdl" href="assets/trezor/watch-homescreen-trezor-safe-7-380x520.png" download>Download</a>
+    </div>
+  </div>
+  <p class="hsnote">A homescreen image is cosmetic — it changes nothing about the device's security.</p>
+</section>
+
+<!-- ============ GOOD HABITS ============ -->
+<section class="platform" id="habits">
+  <div class="plathead"><div class="platicon"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 L10 17.5 L19 6.5" fill="none" stroke="#8ecdf9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h2>Good habits</h2><p>The whole checklist, in one place.</p></div></div>
+  <ol class="steps">
+    <li><h3>Words on paper</h3><p>Write the 12 words with a pen and keep them somewhere safe. No photos, no files, no cloud notes — they restore your money <i>and</i> decrypt your backups.</p></li>
+    <li><h3>Fund small</h3><p>A software wallet is a pocket, not a vault. Keep just enough for your next uploads; a feature film typically costs well under 1&nbsp;ANT to store.</p></li>
+    <li><h3>Trust the Trezor's screen, not the computer's</h3><p>When a hardware wallet shows an address or an amount, that display is the truth. If it ever disagrees with what W@tch shows, stop and press nothing.</p></li>
+    <li><h3>Invite codes are keys</h3><p>A My W@tch invite lets a device read everything your devices sync. Only ever link devices you own, and show codes to no one else.</p></li>
+    <li><h3>Remember it's alpha software</h3><p>W@tch is built in the open and moves fast. The code is public on <a href="https://github.com/aautonomicc/Watch-It">GitHub</a> for anyone to inspect — but alpha means alpha: fund small, keep the words safe, update every linked device together.</p></li>
+  </ol>
+</section>
+
+<section class="guidefoot">
+  <p>Questions about any of this? Ask on <a href="https://github.com/aautonomicc/Watch-It/issues">GitHub</a> — happy to explain further.</p>
+  <a class="btn-glass" href="upload.html">&larr; Upload guide</a>
+  <a class="btn-glass" href="index.html">Home page</a>
+</section>
+
+<footer>
+  <div>W@tch — alpha software, built in the open</div>
+  <div><a href="https://github.com/aautonomicc/Watch-It">github.com/aautonomicc/Watch-It</a> · wordmark set in <a href="assets/fonts/Anton-OFL.txt">Anton (SIL OFL)</a></div>
+</footer>
+
+</div>
+</body>
+</html>
