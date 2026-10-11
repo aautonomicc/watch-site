@@ -77,6 +77,7 @@
       <h3>Create the wallet and write down the 12 words</h3>
       <p>Choose <b>Create new wallet</b>. W@tch shows <b>12 recovery words</b> — write them on paper and keep them somewhere safe. They are the only way to get your money back if this device is ever lost — and they also restore your whole W@tch library on a fresh install once you've used <b>Settings → Backup</b> — and <b>anyone who sees them can take the money and read your backups</b>, so don't photograph them or save them in a file. Tap <b>I've written them down</b>, then confirm by retyping the three words it asks for and press <b>Create wallet</b>.</p>
       <p>Already have a wallet? <b>Import existing wallet</b> accepts a 12- or 24-word phrase or a private key instead.</p>
+      <p>On a desktop you can instead connect a <b>Trezor hardware wallet</b> (plain USB, no extra software): the keys never leave the device, and every payment waits for a physical tap on it. And where W@tch has to keep a software wallet's key in a file rather than the system keychain, you can protect that file with a <b>passphrase</b> — W@tch then asks for it after each restart.</p>
       <figure class="stepshot"><img src="assets/upload/wallet-2-seed.png" alt="Back up your wallet screen in W@tch showing the 12 recovery words" width="1200" height="700" onload="this.closest('figure').style.display='block'"><figcaption>Write the 12 words on paper</figcaption></figure>
     </li>
     <li>
@@ -174,7 +175,7 @@
   <ol class="steps">
     <li>
       <h3>Read the estimate</h3>
-      <p>At the bottom of the review page W@tch fetches a live price from the network and shows something like <b>"3 uploads · estimated cost ≈0.4 ANT (+ gas)"</b>, next to what's in your wallet. It's an estimate — each file is priced at the live rate when its turn comes, so the final total can differ a little. The small ETH "gas" fee comes on top.</p>
+      <p>At the bottom of the review page W@tch fetches a live price from the network and shows something like <b>"3 uploads · estimated cost ≈0.4 ANT (+ gas)"</b>, next to what's in your wallet — and the whole batch is <b>paid together</b>, typically in a single payment transaction (the page says how many). It's an estimate — the final price is quoted live when the batch pays, so the total can differ a little. The small ETH "gas" fee comes on top.</p>
       <figure class="stepshot"><img src="assets/upload/upload-7-cost.png" alt="The cost estimate box showing the estimated ANT cost and wallet balance" width="1200" height="700" onload="this.closest('figure').style.display='block'"><figcaption>The live cost estimate, next to your balance</figcaption></figure>
     </li>
     <li>
@@ -194,7 +195,7 @@
   <ol class="steps">
     <li>
       <h3>Let it run — you don't have to watch</h3>
-      <p>Files go up one at a time, each moving through <b>Encoding → Encrypting → Getting storage quotes → Paying → Storing chunks</b>. You can use the rest of W@tch while it works — the upload carries on and the screen picks up where it left off when you come back. Just <b>keep W@tch open</b> until it finishes. Big files take a while; overnight is fine.</p>
+      <p>W@tch prepares everything first, then pays for the whole batch together, then stores it: <b>Encoding → Encrypting → Getting storage quotes → Paying → Storing chunks</b>. You can use the rest of W@tch while it works — the upload carries on and the screen picks up where it left off when you come back. Just <b>keep W@tch open</b> until it finishes. Big files take a while; overnight is fine. If anything fails along the way, retrying within a week is free — the payment is remembered.</p>
       <figure class="stepshot"><img src="assets/upload/upload-8-progress.png" alt="The uploading screen showing the current file's progress through the upload phases" width="1200" height="700" onload="this.closest('figure').style.display='block'"><figcaption>Encoding → encrypting → paying → storing</figcaption></figure>
     </li>
     <li>
