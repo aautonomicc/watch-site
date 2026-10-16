@@ -131,7 +131,7 @@
     </li>
     <li>
       <h3>Every payment is a tap</h3>
-      <p>Uploads and backups each wait for a physical confirmation on the device, with the amount shown on its screen. W@tch opens a fresh session with the device for every signature, silently re-checks the address before each tap, and verifies every signature locally <b>before</b> anything is sent to the network — if something doesn't line up, nothing is sent and nothing is spent. Whole upload batches are pooled so a batch typically needs just one payment confirmation.</p>
+      <p>Uploads and backups each wait for a physical confirmation on the device, with the amount shown on its screen — <b>one tap per payment</b>. W@tch opens one session with the device at the start of each backup or upload run (so a passphrase, if you use one, is entered once per run, and a missing or wrong device fails in seconds rather than after minutes of work), silently re-checks the address before each tap, and verifies every signature locally <b>before</b> anything is sent to the network — if something doesn't line up, nothing is sent and nothing is spent. Each tap comes with a plain-language prompt on screen and a short chime, so you know when the device is waiting for you. Whole upload batches are pooled so a batch typically needs just one payment confirmation.</p>
     </li>
     <li>
       <h3>What's stored on the computer</h3>
@@ -139,7 +139,7 @@
     </li>
     <li>
       <h3>Passphrase / hidden wallets work</h3>
-      <p>If your Trezor uses a passphrase (the "25th word" that opens a hidden wallet), enter it on the device as usual — W@tch binds itself to whichever wallet the ceremony ran in, and refuses loudly, before any tap, if the device is later opened on a different hidden wallet. Each passphrase is its own wallet with its own backup line.</p>
+      <p>If your Trezor uses a passphrase (the "25th word" that opens a hidden wallet), enter it on the device as usual, once at the start of each backup or upload run — W@tch binds itself to whichever wallet the ceremony ran in, and refuses loudly, before any tap, if the device is later opened on a different hidden wallet. Each passphrase is its own wallet with its own backup line.</p>
     </li>
     <li>
       <h3>Linux note</h3>
