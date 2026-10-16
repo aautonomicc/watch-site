@@ -285,3 +285,28 @@ footer a:hover { color: #F5F2EB; }
   .fc-bottom { bottom: -12px; left: 8px; }
   .stats { gap: 22px; }
 }
+
+/* Powered by Autonomi — home-page band + footer line (nominative use of the Autonomi wordmark) */
+.powered { padding: 6px 64px 10px; }
+.poweredcard {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.11); border-radius: 22px;
+  padding: 34px 40px 36px; position: relative; overflow: hidden;
+}
+.poweredcard::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(520px 200px at 50% 0%, rgba(233,19,55,0.16), transparent 70%);
+}
+.poweredtext { position: relative; max-width: 640px; }
+.poweredkicker { font-size: 11.5px; letter-spacing: 2.5px; color: #8a93a3; margin-bottom: 14px; }
+.poweredlogo { display: inline-block; }
+.poweredlogo img { display: block; width: 256px; height: auto; margin: 0 auto; transition: opacity 0.15s; }
+.poweredlogo:hover img { opacity: 0.8; }
+.poweredtext p { color: #a7afbc; font-size: 14.5px; line-height: 1.6; margin-top: 18px; }
+.poweredtext p b { color: #F5F2EB; font-weight: 600; }
+.poweredcta { display: inline-block; margin-top: 20px; }
+.footpowered { display: inline-flex; align-items: center; gap: 6px; }
+.footpowered img { height: 13px; width: auto; display: inline-block; opacity: 0.75; transition: opacity 0.15s; }
+.footpowered:hover img { opacity: 1; }
+@media (max-width: 980px) { .powered { padding-left: 32px; padding-right: 32px; } }
+@media (max-width: 560px) { .powered { padding-left: 18px; padding-right: 18px; } .poweredcard { padding: 28px 20px; } .poweredlogo img { width: 200px; } }
